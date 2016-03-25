@@ -8,7 +8,7 @@ def wordSelector():
   i = -1
   while wordBot[i].startswith(inpt[-1]) == False:
     i = i -1
-    if wordBot[i].startswith(inpt[-1]) == True:
+    if wordBot[i].startswith(inpt[-1]) == True and wordBot[i] not in wordUsed:
       wordUsed.append(wordBot[i])
       print(wordBot[i])
       wordBot.pop(i)
@@ -28,9 +28,23 @@ def score(wordScore):
 
 def header():
   os.system('clear') 
-  print(gameName.upper()+'''             Type Q to close the game.\n___________________________________________________________________________''')
+  print(gameName.upper()+'''     Type A to show advice         Type Q to close the game.\n___________________________________________________________________________''')
 
+def wordAdvice():
+  i = -1
+  lastUsed = wordUsed[-1]
+  while wordBot[i].startswith(lastUsed[-1]) == False:
+    i = i -1
+    if wordBot[i].startswith(lastUsed[-1]) == True and wordBot[i] not in wordUsed:
+      print('Advice: you can type - '+wordBot[i])
+      break
 
+def countryAdvice():
+  advice = random.choice(wordBot)
+  if advice not in wordUsed:
+    print('Advice: you can type - '+advice)
+  else:
+    countryAdvice()  
 
 def endGame():
   print('''\n  ____________________________________
@@ -126,6 +140,8 @@ else:
       endGame()  
     elif inpt =='q' or inpt =='Q':
       exit()
+    elif inpt == 'a' or inpt == 'A':
+      wordAdvice() 
     else:
       wordStorage = wordUsed[-1]
       if inpt in originalDict:
