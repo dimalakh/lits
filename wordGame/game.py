@@ -100,9 +100,9 @@ if menuInpt == '2':
         elif len(wordBot) == 0:
           print('You win!') 
         else:
-          print('it isnt word')    
           endCounter = endCounter + 1
-          if endCounter > 5:
+          print('it isnt country.'+str(endCounter)+'/5')
+          if endCounter == 5:
             endGame()
 
   print('You win!') 
@@ -113,13 +113,15 @@ elif menuInpt == '3':
   wordUsed = ["a"]
   scoreStorage = [0]
   wordBot = dictionary
-  originalDict = dictionary 
+  originalDict = dictionary
+  print('=)') 
 elif menuInpt == '4':
   gameName = 'Rivers'
   wordUsed = ["a"]
   scoreStorage = [0]
   wordBot = dictionary
   originalDict = dictionary 
+  print('=)')
 else:
   wordUsed = ["a"]
   gameName = 'Words'
@@ -157,10 +159,10 @@ else:
           print('First letter must be '+wordStorage[-1])
       elif len(wordBot) == 0:
         print('You win!') 
-      else:
-        print('it isnt word') 
+      else: 
         endCounter = endCounter + 1
-        if endCounter > 5:
+        print('it isnt word.'+str(endCounter)+'/5')
+        if endCounter == 5:
           endGame()
 
   print('You win!') 
